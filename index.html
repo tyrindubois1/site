@@ -1584,11 +1584,11 @@
 </head>
 <body>
     <div class="overlay" href="" id="overlay" onclick="enterHideout()">
-        <a href="https://imagevault.cloud/N8XKG88" target="_blank" rel="noopener noreferrer id="overlayText">Welcome To PVs Hideout, Please Click To Enter.</a>
+        <a target="_blank" rel="noopener noreferrer id="overlayText">Welcome To Coffee's Hideout, Please Click To Enter.</a>
     </div>
     
     <div id="content" style="visibility: hidden;">
-        <p>Welcome to pvs hideout</p>
+        <p>Welcome to Coffee's hideout</p>
         <!-- Your main content goes here -->
         <p>More text, images, or anything else you want to display on your webpage.</p>
         <!-- Your buttons and interactive elements -->
@@ -1662,56 +1662,7 @@
                             <h1 id="text01">PV</h1>
                             <p id="text07" class="style3">18 Year Old Software Developer And Full Stack Developer.<3<br> <br> C# / C++ / C
                             </p>
-                            <ul id="buttons02" class="style1 buttons">
-                                <li>
-                                    <a id="spotifyButton" href="https://open.spotify.com/playlist/5lOjanlw5xIOqo4V7rbMgV?si=1aca9d31b97b4731" class="button n02">
-                                        <svg>
-                                            <use xlink:href="#icon-a9c84932437f40c5b58d70f4cee9d76d"></use>
-                                        </svg>
-                                        <span id="spotifyLabel" class="label">Spotify -> </span>
-                                    </a>
-                                </li>
-                            </ul>
-                            
-                            <script>
-                            // Function to fetch current playback information from Spotify API
-                            function fetchCurrentlyPlaying() {
-                                // Make an API call to retrieve current playback info
-                                fetch('https://api.spotify.com/v1/me/player/currently-playing', {
-                                    method: 'GET',
-                                    headers: {
-                                        'Authorization': 'Bearer BQBTJhLFlVYcZhSuxyHPOCa3NZoN79C-WM0WsreWfCRRadFF5hfMG_3wpUqUAigkA4kzLWcFAgYj4NiPpZjYyQy1DoojTfDFShjU3kpu1YpvdEJneA1QmupFIzZbKmaOaV0aWt-iswjTV8G8wDl2nIAQc1zpZcVEGFFaXp_S0975o8RPDJV4uenT1rl8hv1X2UmUscjUdPJ9Z0xOXlJWubRVg04rOe4EUZI5VgK4odkaLNUGXj1H4MOypBOIB__OdQteKbgbjL5dEths6aAM_8n-'
-                                    }
-                                })
-                                .then(response => {
-                                    if (!response.ok) {
-                                        throw new Error('Network response was not ok');
-                                    }
-                                    return response.json();
-                                })
-                                .then(data => {
-                                    // Check if user is currently playing a track
-                                    if (data && data.is_playing) {
-                                        // Update button label with track information
-                                        document.getElementById('spotifyLabel').textContent = `Spotify -> ${data.item.name} by ${data.item.artists[0].name}`;
-                                    } else {
-                                        // If user is not playing anything, revert to default label
-                                        document.getElementById('spotifyLabel').textContent = 'Spotify ->';
-                                    }
-                                })
-                                .catch(error => {
-                                    console.error('Error fetching currently playing:', error);
-                                    // Revert to default label on error
-                                    document.getElementById('spotifyLabel').textContent = 'Spotify ->';
-                                });
-                            }
-                            
-                            // Fetch currently playing track when the page loads
-                            fetchCurrentlyPlaying();
-                            
-                            // Poll the Spotify API every 10 seconds to keep the information up-to-date
-                            setInterval(fetchCurrentlyPlaying, 10000);
-                            </script>
+                            <iframe src="https://widget.nowplaying.site/sWDCzMdW10CJztIx" width="300" height="380" frameborder="0" allowtransparency="true" style="overflow:hidden;"></iframe>
                         </div>
                     </div>
                 </div>
