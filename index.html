@@ -1660,18 +1660,58 @@
                             <div id="image01" class="style1 image"><span class="frame"><img src="./media/image01.jpg"
                                         alt=""></span></div>
                             <h1 id="text01">PV</h1>
-                            <p id="text07" class="style3">18 Year Old Software Developer And Web/Front End Developer.<3<br> <br> Rosette >>> (Gold 1 BTW!)
+                            <p id="text07" class="style3">18 Year Old Software Developer And Full Stack Developer.<3<br> <br> C# / C++ / C
                             </p>
                             <ul id="buttons02" class="style1 buttons">
-                                <li><a href="https://discord.gg/pvt" class="button n01"><svg>
-                                            <use xlink:href="#icon-021973a1bb185878b41e1ef48ed6bbaa"></use>
-                                        </svg><span class="label">Discord</span></a></li>
-                                <li><a href="https://open.spotify.com/playlist/5lOjanlw5xIOqo4V7rbMgV?si=1aca9d31b97b4731"
-                                        class="button n02"><svg>
+                                <li>
+                                    <a id="spotifyButton" href="https://open.spotify.com/playlist/5lOjanlw5xIOqo4V7rbMgV?si=1aca9d31b97b4731" class="button n02">
+                                        <svg>
                                             <use xlink:href="#icon-a9c84932437f40c5b58d70f4cee9d76d"></use>
-                                        </svg><span class="label">Spotify</span></a></li>
+                                        </svg>
+                                        <span id="spotifyLabel" class="label">Spotify -> </span>
+                                    </a>
+                                </li>
                             </ul>
-                            <iframe src="https://canary.discord.com/widget?id=1151174609949950025&theme=dark" width="350" height="500" allowtransparency="true" frameborder="0" sandbox="allow-popups allow-popups-to-escape-sandbox allow-same-origin allow-scripts"></iframe>
+                            
+                            <script>
+                            // Function to fetch current playback information from Spotify API
+                            function fetchCurrentlyPlaying() {
+                                // Make an API call to retrieve current playback info
+                                fetch('https://api.spotify.com/v1/me/player/currently-playing', {
+                                    method: 'GET',
+                                    headers: {
+                                        'Authorization': 'Bearer BQBTJhLFlVYcZhSuxyHPOCa3NZoN79C-WM0WsreWfCRRadFF5hfMG_3wpUqUAigkA4kzLWcFAgYj4NiPpZjYyQy1DoojTfDFShjU3kpu1YpvdEJneA1QmupFIzZbKmaOaV0aWt-iswjTV8G8wDl2nIAQc1zpZcVEGFFaXp_S0975o8RPDJV4uenT1rl8hv1X2UmUscjUdPJ9Z0xOXlJWubRVg04rOe4EUZI5VgK4odkaLNUGXj1H4MOypBOIB__OdQteKbgbjL5dEths6aAM_8n-'
+                                    }
+                                })
+                                .then(response => {
+                                    if (!response.ok) {
+                                        throw new Error('Network response was not ok');
+                                    }
+                                    return response.json();
+                                })
+                                .then(data => {
+                                    // Check if user is currently playing a track
+                                    if (data && data.is_playing) {
+                                        // Update button label with track information
+                                        document.getElementById('spotifyLabel').textContent = `Spotify -> ${data.item.name} by ${data.item.artists[0].name}`;
+                                    } else {
+                                        // If user is not playing anything, revert to default label
+                                        document.getElementById('spotifyLabel').textContent = 'Spotify ->';
+                                    }
+                                })
+                                .catch(error => {
+                                    console.error('Error fetching currently playing:', error);
+                                    // Revert to default label on error
+                                    document.getElementById('spotifyLabel').textContent = 'Spotify ->';
+                                });
+                            }
+                            
+                            // Fetch currently playing track when the page loads
+                            fetchCurrentlyPlaying();
+                            
+                            // Poll the Spotify API every 10 seconds to keep the information up-to-date
+                            setInterval(fetchCurrentlyPlaying, 10000);
+                            </script>
                         </div>
                     </div>
                 </div>
@@ -1703,7 +1743,7 @@
                                             </svg><span class="label">VALORANT</span></a></li>
                                 </ul>
                                 <h2 id="text15" class="style1">Valorant</h2>
-                                <p id="text16" class="style2">Habor#OnTop</p>
+                                <p id="text16" class="style2">Secret.</p>
                             </div>
                         </div>
                     </div>
